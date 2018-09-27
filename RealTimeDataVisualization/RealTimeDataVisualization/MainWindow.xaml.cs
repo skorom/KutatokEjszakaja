@@ -67,7 +67,10 @@ namespace RealTimeDataVisualization
             else
             {
                 x.Add(x.Count + 1);
-                y.Add(Convert.ToDouble(f.Object.temp.Split('.')[0]));
+                string tmp = f.Object.temp.Substring(0, 5);
+                StringBuilder strb = new StringBuilder(tmp);
+                strb[2] = ',';
+                y.Add(Convert.ToDouble(strb.ToString()));
                 linegraph.Plot(x, y); // x and y are IEnumerable<double>
             }
         }
